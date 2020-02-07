@@ -1,36 +1,43 @@
 import React, { useState } from 'react';
 import './App.css';
+import { getDeliveries } from './lib/apiService';
+
+const handleGetDeliveries = async (setDeliveries) => {
+  const deliveries = await getDeliveries();
+  console.log(deliveries);
+  setDeliveries(deliveries);
+}
 
 function App() {
 
-  let [deliverers, setDeliverers] = useState([]);
+  let [deliveries, setDeliveries] = useState([]);
 
-  fetch('http://localhost:3000/deliverers').then((response) => {
-    return response.json();
-  }).then((deliverersFromApi) => {
-    setDeliverers(deliverersFromApi);
-    //deliverers = data;
-  });
+  handleGetDeliveries(setDeliveries);
 
-    // deliverers.push({
-    //     id:2,
-    //     lastName:'Toto',
-    //     firstName: 'Tata',
-    //     phonenumber:'333-333-3333'
-    // });
 
-    // deliverers.push({
-    //     id:4,
-    //     lastName:'maman',
-    //     firstName: 'mom',
-    //     phonenumber:'333-333-3333',
-    // });
+
 
   
+  // let [deliverers, setDeliverers] = useState([]);
+
+  // fetch('http://localhost:3000/deliverers').then((response) => {
+  //   return response.json();
+  // }).then((deliverersFromApi) => {
+  //   setDeliverers(deliverersFromApi);
+  //   //deliverers = data;
+  // });
+
+
+
+  // fetch('http://localhost:3000/deliveries').then((response) => {
+  //   return response.json();
+  // }).then((deliveriesFromApi) => {
+  //   setDeliverers(deliveriesFromApi);
+  // });
   return (
     <div className="App">
       <h1>Available deliverers</h1>
-      {deliverers.map(deliverer => {
+      {deliveries.map(deliverer => {
         return <h2>{deliverer.lastName}, {deliverer.firstName}</h2>
       })}
     </div>
