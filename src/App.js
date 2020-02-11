@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { getDeliveries, confirmPickup, getDeliverer} from './lib/apiService';
+import { getDeliveries, confirmPickup,confirmDropOff, getDeliverer} from './lib/apiService';
 
 const handleGetDeliveries = async (setDeliveries) => {
   const deliveries = await getDeliveries();
@@ -64,6 +64,10 @@ function App() {
             <button onClick={async () => {
               await confirmPickup(delivery.id);
             }}>Accept</button>
+
+            <button onClick={async () => {
+              await confirmDropOff(delivery.id);
+            }}>Complet delivery</button>
         </>
       );
       

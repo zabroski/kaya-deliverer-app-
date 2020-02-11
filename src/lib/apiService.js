@@ -38,6 +38,18 @@ export const confirmPickup = async (deliveryId) => {
     }catch(e){
         throw e
     }
+};
+
+
+
+export const confirmDropOff = async (deliveryId) => {
+    try{
+        const response = await axiosClient.post(`/confirm-dropoff/${deliveryId}`);
+        return response.data
+
+    }catch(e){
+        throw e
+    }
 }
 
 
