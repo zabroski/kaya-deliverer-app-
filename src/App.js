@@ -1,11 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { getDeliveries } from './lib/apiService';
+import { getDeliveries, getDeliverer, createDelivery} from './lib/apiService';
+import { createDelivery } from './lib/apiService';
 
 const handleGetDeliveries = async (setDeliveries) => {
   const deliveries = await getDeliveries();
   console.log(deliveries);
   setDeliveries(deliveries);
+}
+
+const handleGetDeliverer = async (setDeliveries) => {
+  const deliverers = await getDeliverer();
+  setDeliverer(deliverers);
+}
+
+
+
+
+const handleCreateDelivery = async (setCreateDelivery) => {
+  const createDeliveries = await createDelivery();
+  setCreateDelivery(createDelivery)
+
+
 }
 
 function App() {
@@ -16,7 +32,8 @@ function App() {
   // };
 
   let [deliveries, setDeliveries] = useState([]);
-  // let [user, setUser] = useState({});
+  let [deliverers, setDeliverer] = useState([]);
+  let [createDeliveries, setCreateDelivery] = useState({});
 
 
   // this.setState({
@@ -29,6 +46,12 @@ function App() {
 
   useEffect(() => {
     handleGetDeliveries(setDeliveries);
+  }, []);
+
+
+  useEffect(() => {
+    handleCreateDelivery(setCreateDelivery);
+    handleGetDeliverer(setDeliverer)
   }, []);
 
 

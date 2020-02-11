@@ -18,6 +18,15 @@ export const getDeliveries = async () => {
     }
 }
 
+export const getDeliverer = async () => {
+    try {
+        const response = await axiosClient.get('/deliverers');
+        return response.data
+    } catch(e){
+        throw e
+    }
+}
+
 export const createDelivery = async (data) => {
     try {
         let delivererId = localStorage.getItem('delivererId')
