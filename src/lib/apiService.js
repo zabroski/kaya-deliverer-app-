@@ -27,14 +27,18 @@ export const getDeliverer = async () => {
     }
 }
 
-export const createDelivery = async (data) => {
-    try {
-        let delivererId = localStorage.getItem('delivererId')
-        const response = await axiosClient.post(`/create-delivery/${delivererId}`, data);
+export const confirmPickupAddress = async () => {
+    try{
+        const response = await axiosClient.get('/confirm-pickup');
         return response.data
-       
-    } catch(e) {
+
+    }catch(e){
         throw e
     }
-};
+}
+
+
+
+
+
 

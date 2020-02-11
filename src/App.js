@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { getDeliveries, getDeliverer, createDelivery} from './lib/apiService';
-import { createDelivery } from './lib/apiService';
+import { getDeliveries, confirmPickupAddress, getDeliverer} from './lib/apiService';
 
 const handleGetDeliveries = async (setDeliveries) => {
   const deliveries = await getDeliveries();
@@ -9,20 +8,10 @@ const handleGetDeliveries = async (setDeliveries) => {
   setDeliveries(deliveries);
 }
 
-const handleGetDeliverer = async (setDeliveries) => {
-  const deliverers = await getDeliverer();
-  setDeliverer(deliverers);
-}
-
-
-
-
-const handleCreateDelivery = async (setCreateDelivery) => {
-  const createDeliveries = await createDelivery();
-  setCreateDelivery(createDelivery)
-
-
-}
+// const handleGetAddress = async (setAddresses) => {
+//   const addresses = await confirmPickupAddress()
+//   setAddresses(addresses)
+// }
 
 function App() {
 
@@ -32,8 +21,8 @@ function App() {
   // };
 
   let [deliveries, setDeliveries] = useState([]);
-  let [deliverers, setDeliverer] = useState([]);
-  let [createDeliveries, setCreateDelivery] = useState({});
+  // let [ addresses , setAddresses] = useState([])
+
 
 
   // this.setState({
@@ -48,17 +37,22 @@ function App() {
     handleGetDeliveries(setDeliveries);
   }, []);
 
-
-  useEffect(() => {
-    handleCreateDelivery(setCreateDelivery);
-    handleGetDeliverer(setDeliverer)
-  }, []);
-
+  // useEffect(() => {
+  //   handleGetAddress(setAddresses);
+  // }, []);
 
 
   return (
     <div className="App">
       <h1>Deliveries</h1>
+      {/* {addresses.map(address => {
+        return(
+        <h3>{address.country}</h3>
+        )
+      })} */}
+
+    
+
       {deliveries.map(delivery => {
       return (
 
@@ -69,9 +63,19 @@ function App() {
             <>
               {delivery.merchant.lastName},
               {delivery.merchant.firstName},
-              {/* {delivery.deliverer.firstName},
-              {delivery.deliverer.lastName}  */}
+              {/* {delivery.addresses}, */}
+              {/* {delivery.addresses.country}, */}
             </>}
+
+            {delivery.addresses.map((address) => {
+              return (
+                <ul>
+                  <li>{address.type}</li>
+                  <li>{address.country}</li>
+                </ul>
+              )
+
+            })}
         </>
       );
       
