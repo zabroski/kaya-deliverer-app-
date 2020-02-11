@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { getDeliveries, confirmPickupAddress, getDeliverer} from './lib/apiService';
+import { getDeliveries, confirmPickup, getDeliverer} from './lib/apiService';
 
 const handleGetDeliveries = async (setDeliveries) => {
   const deliveries = await getDeliveries();
@@ -8,10 +8,13 @@ const handleGetDeliveries = async (setDeliveries) => {
   setDeliveries(deliveries);
 }
 
-// const handleGetAddress = async (setAddresses) => {
-//   const addresses = await confirmPickupAddress()
-//   setAddresses(addresses)
+
+// const handleConfirmPickUp = async (setPickUp) => {
+//   const pickUp = await confirmPickup();
+//   setPickUp(pickUp)
 // }
+
+
 
 function App() {
 
@@ -21,38 +24,19 @@ function App() {
   // };
 
   let [deliveries, setDeliveries] = useState([]);
-  // let [ addresses , setAddresses] = useState([])
-
-
-
-  // this.setState({
-  //   deliveries: []
-  // });
-  // setDeliveries([]);
-
-  // this.state.deliveries;
-  // deliveries
+  // let [pickUp, setPickUp ] = useState([])
 
   useEffect(() => {
     handleGetDeliveries(setDeliveries);
   }, []);
 
   // useEffect(() => {
-  //   handleGetAddress(setAddresses);
+  //   handleConfirmPickUp(setPickUp);
   // }, []);
-
 
   return (
     <div className="App">
       <h1>Deliveries</h1>
-      {/* {addresses.map(address => {
-        return(
-        <h3>{address.country}</h3>
-        )
-      })} */}
-
-    
-
       {deliveries.map(delivery => {
       return (
 
@@ -62,20 +46,24 @@ function App() {
           {delivery.merchant&& 
             <>
               {delivery.merchant.lastName},
-              {delivery.merchant.firstName},
-              {/* {delivery.addresses}, */}
-              {/* {delivery.addresses.country}, */}
+              {delivery.merchant.firstName}
             </>}
 
             {delivery.addresses.map((address) => {
               return (
                 <ul>
                   <li>{address.type}</li>
+                  <li>{address.street}</li>
+                  <li>{address.zipCode}</li>
                   <li>{address.country}</li>
+                  <li>{address.city}</li>
                 </ul>
               )
 
             })}
+            <button onClick={async () => {
+              await confirmPickup(delivery.id);
+            }}>Accept</button>
         </>
       );
       

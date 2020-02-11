@@ -27,9 +27,12 @@ export const getDeliverer = async () => {
     }
 }
 
-export const confirmPickupAddress = async () => {
+
+
+export const confirmPickup = async (deliveryId) => {
     try{
-        const response = await axiosClient.get('/confirm-pickup');
+        // let deliveryId = localStorage.getItem('deliveryId')
+        const response = await axiosClient.post(`/confirm-pickup/${deliveryId}`);
         return response.data
 
     }catch(e){
