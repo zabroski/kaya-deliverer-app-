@@ -50,6 +50,16 @@ export const confirmDropOff = async (deliveryId) => {
     }catch(e){
         throw e
     }
+};
+
+export const getDeliveriesHistories = async () => {
+    try {
+        const response = await axiosClient.get('/deliveries-history');
+        return response.data;
+       
+    } catch(e) {
+        throw e
+    }
 }
 
 
