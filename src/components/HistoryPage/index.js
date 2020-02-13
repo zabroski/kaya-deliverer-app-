@@ -3,13 +3,13 @@ import {getDeliveriesHistories} from '../../lib/apiService';
 import Delivery from '../Delivery';
 
 
+
 const handleGetDeliveriesHistory = async (setDeliveries) => {
     const deliveries = await getDeliveriesHistories();
     setDeliveries(deliveries);
   }
 
-
-  function History(props) {
+  function HistoryPage(props) {
 
     let [deliveries, setDeliveries] = useState([]);
   
@@ -27,4 +27,4 @@ const handleGetDeliveriesHistory = async (setDeliveries) => {
     );
   }
 
-export default History;
+export default HistoryPage;
