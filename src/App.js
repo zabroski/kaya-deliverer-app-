@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { getDeliveries, getDeliverer} from './lib/apiService';
 import Delivery from './components/Delivery';
+import History from './components/History';
+
+
+
 
 const handleGetDeliveries = async (setDeliveries) => {
   const deliveries = await getDeliveries();
@@ -19,7 +23,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Deliveries</h1>
+      <History />
+      {/* <h1>Deliveries</h1>
       {deliveries.map(delivery => {
       return (
         <div>
@@ -28,7 +33,8 @@ function App() {
 
       );
       
-      })}
+      })} */}
+
     </div>
   );
 }
