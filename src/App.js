@@ -1,19 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import { getDeliveries, getDeliverer} from './lib/apiService';
-import Delivery from './components/Delivery';
+// import { getDeliveries, getDeliverer} from './lib/apiService';
+// import DeliveryPage from './components/DeliveryPage';
 import HistoryPage from './components/HistoryPage';
 import DashboardPage from './components/DashboardPage'
 import { Route, Link} from "react-router-dom";
 
-
-
-
-// const handleGetDeliveries = async (setDeliveries) => {
-//   const deliveries = await getDeliveries();
-//   console.log(deliveries);
-//   setDeliveries(deliveries);
-// }
 
 function App() {
 
@@ -22,6 +14,7 @@ function App() {
   return (
     <div className="App">
       <Link to='/history'>History</Link>
+      <Link to='/'>Dashboar</Link>
       {/* <History /> */}
       {/* <h1>Deliveries</h1>
       {deliveries.map(delivery => {
