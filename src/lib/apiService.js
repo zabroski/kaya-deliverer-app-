@@ -14,6 +14,20 @@ const axiosClient = axios.create({
 console.log(BASE_URL)
 
 
+export const getProfile = async ()=> {
+    try {
+        const response = await axiosClient.get('/app/profile')
+        const {user} = response.data
+
+        return user
+
+    } catch(e) {
+        throw e
+
+    }
+}
+
+
 export const signUp = async (data) => {
     try {
         const response = await axiosClient.post('/auth/signup', data)
