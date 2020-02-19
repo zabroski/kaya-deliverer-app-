@@ -13,6 +13,45 @@ const axiosClient = axios.create({
 
 console.log(BASE_URL)
 
+
+export const signUp = async (data) => {
+    try {
+        const response = await axiosClient.post('/auth/signup', data)
+        const { token, user } = response.data
+
+        localStorage.setItem('token', token)
+        return user
+
+    } catch(e) {
+        throw e
+    }
+};
+
+
+export const login = async (data) => {
+    try {
+        const response = await axiosClient.post('/auth/login', data)
+        const { token, user } = response.data
+
+        localStorage.setItem('token', token)
+        return user
+
+    } catch(e) {
+        throw e
+    }
+}
+
+
+
+// export const getDeliverer = async (delevererId) => {
+//     try {
+//         const response = await axiosClient.get('/deliverers');
+//         return response.data
+//     } catch(e){
+//         throw e
+//     }
+// }
+
 export const getDeliveries = async () => {
     try {
         const response = await axiosClient.get('/deliveries');
@@ -23,14 +62,7 @@ export const getDeliveries = async () => {
     }
 }
 
-export const getDeliverer = async () => {
-    try {
-        const response = await axiosClient.get('/deliverers');
-        return response.data
-    } catch(e){
-        throw e
-    }
-}
+
 
 
 
@@ -69,50 +101,12 @@ export const getDeliveriesHistories = async () => {
 
 
 
-//authentique
-
-
-export const login = async (data) => {
-    try {
-        const response = await axiosClient.post('/auth/login', data)
-        const { token, user } = response.data
-
-        localStorage.setItem('token', token)
-        return user
-
-    } catch(e) {
-        throw e
-    }
-}
 
 
 
-export const signUp = async (data) => {
-    try {
-        const response = await axiosClient.post('/auth/signup', data)
-        const { token, user } = response.data
-
-        localStorage.setItem('token', token)
-        return user
-
-    } catch(e) {
-        throw e
-    }
-};
 
 
-export const getProfile = async ()=> {
-    try {
-        const response = await axiosClient.get('/app/profile')
-        const {user} = response.data
 
-        return user
-
-    } catch(e) {
-        throw e
-
-    }
-}
 
 
 
