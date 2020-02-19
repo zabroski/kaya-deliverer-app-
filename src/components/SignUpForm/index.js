@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { signUp } from '../../lib/apiService';
-
-import {Redirect} from 'react-router'
+// import {Redirect} from 'react-router'
 
 const handleSubmitForm = async (e, form, setForm) => {
         e.preventDefault()

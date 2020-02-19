@@ -5,7 +5,8 @@ import React,{useState, useEffect} from 'react';
 // import DeliveryPage from './components/DeliveryPage';
 import HistoryPage from './components/HistoryPage';
 import DashboardPage from './components/DashboardPage';
-import SignupPage from './components/SignupPage'
+import SignupPage from './components/SignupPage';
+import LoginPage from  './components/LoginPage';
 import { Route, Link} from "react-router-dom";
 
 
@@ -52,6 +53,14 @@ function App(props) {
               <SignupPage />
             </span>
           );
+        }} />
+
+        <Route path="/login" exact={true} render={(props) => {
+            return (
+              <span>
+                <LoginPage />
+              </span>
+            );
         }} />
 
     </div>

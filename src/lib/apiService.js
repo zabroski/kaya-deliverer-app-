@@ -43,14 +43,14 @@ export const login = async (data) => {
 
 
 
-// export const getDeliverer = async (delevererId) => {
-//     try {
-//         const response = await axiosClient.get('/deliverers');
-//         return response.data
-//     } catch(e){
-//         throw e
-//     }
-// }
+export const getDeliverer = async (delevererId) => {
+    try {
+        const response = await axiosClient.get('/deliverers');
+        return response.data
+    } catch(e){
+        throw e
+    }
+}
 
 export const getDeliveries = async () => {
     try {
