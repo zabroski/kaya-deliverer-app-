@@ -48,10 +48,10 @@ export const signUp = async (data) => {
 export const login = async (data) => {
     try {
         const response = await axiosClient.post('/auth/login', data)
-        const { token, user } = response.data
+        const { token, deliverer } = response.data
 
         localStorage.setItem('token', token)
-        return user
+        return deliverer
 
     } catch(e) {
         throw e

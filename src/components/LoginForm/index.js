@@ -1,16 +1,16 @@
 // import React from 'react';
 import React, { useState } from 'react';
 import { login } from '../../lib/apiService';
-// import {Redirect} from 'react-router'
+import {Redirect} from 'react-router'
 
 
 
 const handleSubmitForm = async (e, form, setForm) => {
     e.preventDefault()
-    const { email, password } = form;
+    const { email, password } = form.form;
 
     try {
-        await login({ email, password});
+        await login({ email, password})
 
     } catch(e) {
         form["showError"] = true;
@@ -39,10 +39,30 @@ setForm({
             }
         });
 
+
+        // const { isSignedIn} = this.props
+        // const { showError } = this.state
+
+        let errorMessage;
+
+        // if(showError) {
+        //     errorMessage = (
+        //         <div className="errorMessage">
+        //             <span>An error occured, please tryagain</span>
+        //         </div>
+        //     )
+        // }
+        // if (isSignedIn) {
+        //     return <Redirect to="/history" />
+        // }
+
+
+
+
     return( 
         <div>
             <h1>Login</h1>
-            {/* { errorMessage} */}
+            { errorMessage}
             <form className="form" onSubmit={(e) => {
                  handleSubmitForm(e, form, setForm);
 
@@ -126,7 +146,7 @@ export default LoginForm;
 //             )
 //         }
 //         if (isSignedIn) {
-//             return <Redirect to="/dashboard" />
+//             return <Redirect to="/history" />
 //         }
 //         return( 
 //             <div>
