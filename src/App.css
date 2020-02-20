@@ -5,6 +5,16 @@
 body {
   background-color: rgb(232, 232, 219);
 }
+
+.sign-form-title {
+  font-size: 18px;
+  text-align: justify;
+  display: flex;
+  justify-content: center;
+  margin-left: -54px;
+  
+  
+}
 /* .App {
   width: 1028px;
   margin: 0 auto;
@@ -27,7 +37,8 @@ body {
 
 .form {
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
+  font-family: 'Gotham_Book';
   display: flex;
   flex-direction: column;
   border: 1px rgb(250, 247, 247) solid;
@@ -59,6 +70,7 @@ body {
   margin-top: 10px;
   padding: 10px;
   border-radius: 5%;
+  outline: none;
 }
 
 .errorMessage {

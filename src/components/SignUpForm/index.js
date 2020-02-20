@@ -5,10 +5,8 @@ import { signUp } from '../../lib/apiService';
 const handleSubmitForm = async (e, form, setForm) => {
         e.preventDefault()
         const { lastName, firstName, email, password } = form.form;
-        // const  { handleSignUp } = this.props;
         console.log(form);      
      
-
         try {
 
             await signUp({lastName, firstName, email, password});
@@ -51,10 +49,23 @@ const SignUpForm = () => {
 
     return(
         <div>
-            <h1 className="sign-form-title">Sign up</h1>
+            <p className="sign-form-title">Let's start with creating you <br/> account</p>
             <form className = "form" onSubmit={(e) => {
                 handleSubmitForm(e, form, setForm);
             }}>
+
+
+                <div>
+                    <label>FirstName</label>
+                    <input 
+                        type="text" 
+                        name='firstName'
+                        onChange={(e) => {
+                            handleTextInput(e, form, setForm);
+                        }}
+                        value={form.firstName}
+                    />
+                </div>
                 <div>
                     <label>LastName</label>
                     <input 
@@ -68,19 +79,7 @@ const SignUpForm = () => {
                 </div>
 
                 <div>
-                    <label>FirstName</label>
-                    <input 
-                        type="text" 
-                        name='firstName'
-                        onChange={(e) => {
-                            handleTextInput(e, form, setForm);
-                        }}
-                        value={form.firstName}
-                    />
-                </div>
-
-                <div>
-                    <label>Email</label>
+                    <label>Email Address</label>
                     <input 
                     type="text" 
                     name="email"
@@ -101,7 +100,7 @@ const SignUpForm = () => {
                     value={form.password} />
                 </div>
 
-                <button className="sign-up-button">Sign up</button>
+                <button className="sign-up-button">CONTINUE</button>
             </form>
         </div>
     );
