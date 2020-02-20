@@ -1,5 +1,9 @@
 .App {
-  text-align: center;
+  text-align: center; 
+}
+
+body {
+  background-color: rgb(232, 232, 219);
 }
 /* .App {
   width: 1028px;
@@ -26,20 +30,28 @@
   justify-content: center;
   display: flex;
   flex-direction: column;
-  border: 1px #eee solid;
+  border: 1px rgb(250, 247, 247) solid;
 }
 
 .form label {
-  font-size: 20px;
+  font-size: 15px;
+  color: rgb(58, 42, 42);
+  display: flex;
 }
 
 .form input {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 28px;
+  margin-bottom: 22px;
   margin-top: 5px;
-  border-radius: 3px;
-  padding: 5px;
+  /* border-radius: 3px; */
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  /* padding: 3px; */
   display: block;
+  outline: none;
+  border: white;
+ background-color: rgb(250, 247, 247)
 }
 
 .form button {
