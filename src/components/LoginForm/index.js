@@ -144,7 +144,7 @@ handleTextInput = (event) => {
             )
         }
         if (isSignedIn) {
-            return <Redirect to="/history" />
+            return <Redirect to="/" />
         }
         return( 
             <div>

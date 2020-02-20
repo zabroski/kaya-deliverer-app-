@@ -14,7 +14,7 @@ function DashboardPage () {
     let [deliveries, setDeliveries] = useState([]);
 
     useEffect(() => {
-      // handleGetDeliveries(setDeliveries);
+       handleGetDeliveries(setDeliveries);
     }, []);
 
     return(

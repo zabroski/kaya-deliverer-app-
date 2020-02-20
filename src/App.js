@@ -88,27 +88,12 @@ render() {
 
   return (
     <div className="App">
+      {isSignedIn}
       <nav>
-        {
-          isSignedIn && 
-          <div>
-            <Link to='/deliverers'>Dashboar</Link>
-          </div>
-        }
-
-        {
-          isSignedIn && 
-          <div><Link to="/deliveries-history">My history</Link></div>
-        }
-
-        {
-          !isSignedIn ? (
-            <div><Link to="/login">SIGN IN</Link></div>
-            ) : (
-            <button onClick= {this.signOutUser}>Sign Out</button>
-            )
-        }
-
+        {isSignedIn && <Link to='/deliverers'>Dashboar</Link>}
+        {isSignedIn && <Link to="/deliveries-history">HISTORY</Link>}
+        {!isSignedIn ?  <Link to="/login">SIGN IN</Link> :
+         <button onClick= {this.signOutDeliverere}>Sign Out</button>}
         {
             !isSignedIn ? (
               <div><Link to="/signup">REGISTER</Link></div>
@@ -118,22 +103,32 @@ render() {
           }
       </nav>
     <main>
-      {/* <ProtectedRoute path="/"
-      deliverer={deliverer} 
-      component={DashboardPage}/> */}
 
-      {/* <ProtectedRoute path="/history"
-      deliverer={deliverer} 
-      component={HistoryPage}/> */}
+
+    
 
       <Route 
+        exact={true}
         path="/login"
         render={(props) => <LoginPage  {...props} handleLogin={this.loginDeliverer} isSignedIn={isSignedIn}/>} />
       <Route 
+        exact={true}
         path='/signup' 
         render = {(props) => <SignupPage {...props} handleSignUp={this.signUpDeliverer} isSignedIn={isSignedIn} />}/>
-    </main>
-    </div>
+      <ProtectedRoute 
+        exact={true}
+        path='/deliverers'
+        deliverer={deliverer} 
+        component={DashboardPage}
+      />
+
+      <ProtectedRoute 
+      exact={true}
+      path='/deliveries-history'
+      deliverer={deliverer} 
+      component={HistoryPage}/>
+      </main>
+      </div>
   );
 
 }

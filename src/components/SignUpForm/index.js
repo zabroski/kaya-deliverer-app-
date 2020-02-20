@@ -49,7 +49,7 @@ const SignUpForm = () => {
 
     return(
         <div>
-            <p className="sign-form-title">Let's start with creating you <br/> account</p>
+            <p className="sign-form-title">Let's start with creating your <br/> account</p>
             <form className = "form" onSubmit={(e) => {
                 handleSubmitForm(e, form, setForm);
             }}>
