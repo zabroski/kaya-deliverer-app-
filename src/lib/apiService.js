@@ -28,12 +28,16 @@ export const getProfile = async ()=> {
 
 
 export const signUp = async (data) => {
-    try {
-        const response = await axiosClient.post('/auth/signup', data)
-        const { token, user } = response.data
 
+    try {
+        console.log('RIGHT HERERRE',data)
+        const response = await axiosClient.post('/auth/signup', data)
+       
+        const { token, deliverer } = response.data
+       
         localStorage.setItem('token', token)
-        return user
+        return deliverer
+      
 
     } catch(e) {
         throw e

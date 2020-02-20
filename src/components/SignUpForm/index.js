@@ -4,9 +4,10 @@ import { signUp } from '../../lib/apiService';
 
 const handleSubmitForm = async (e, form, setForm) => {
         e.preventDefault()
-        const { lastName, firstName, email, password } = form;
+        const { lastName, firstName, email, password } = form.form;
         // const  { handleSignUp } = this.props;
-        // console.log(this.props);
+        console.log(form);      
+     
 
         try {
 
