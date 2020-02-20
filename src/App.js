@@ -13,6 +13,7 @@ import  ProtectedRoute from './components/ProtectedRoute';
 
 
 
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -83,7 +84,7 @@ signUpDeliverer = async (credentials) => {
 
 
 render() {
-  const { isSignedIn , deliverer} = this.state
+  const { isSignedIn , deliverer } = this.state
 
   return (
     <div className="App">
@@ -91,13 +92,13 @@ render() {
         {
           isSignedIn && 
           <div>
-            <Link to="/">Dashboar</Link>
+            <Link to='/deliverers'>Dashboar</Link>
           </div>
         }
 
         {
           isSignedIn && 
-          <div><Link to="/history">My history</Link></div>
+          <div><Link to="/deliveries-history">My history</Link></div>
         }
 
         {
@@ -121,9 +122,9 @@ render() {
       deliverer={deliverer} 
       component={DashboardPage}/> */}
 
-      <ProtectedRoute path="/history"
+      {/* <ProtectedRoute path="/history"
       deliverer={deliverer} 
-      component={HistoryPage}/>
+      component={HistoryPage}/> */}
 
       <Route 
         path="/login"

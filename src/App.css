@@ -1,12 +1,12 @@
-/* .App {
-  text-align: center;
-} */
 .App {
+  text-align: center;
+}
+/* .App {
   width: 1028px;
   margin: 0 auto;
-}
+} */
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -15,15 +15,17 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
-.App-link {
+/* .App-link {
   color: #61dafb;
-}
+} */
 
-.login-form {
-  padding: 15px;
-  width: 400px;
+.form {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
   border: 1px #eee solid;
 }
 
@@ -70,13 +72,13 @@ a {
   text-decoration: none;
 }
 
-.nav-section button {
+/* .nav-section button {
   border: none;
   font-weight: bold;
   padding: 0;
   text-decoration: none;
   font-size: inherit;
-}
+} */
 
 nav button, nav a {
   color: blue;
