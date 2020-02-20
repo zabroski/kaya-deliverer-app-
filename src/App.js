@@ -42,33 +42,33 @@ class App extends React.Component {
 
 
 
-// loginDeliverer = async (credentials) => {
-//   try {
-//     const deliverer = await login(credentials)
+loginDeliverer = async (credentials) => {
+  try {
+    const deliverer = await login(credentials)
 
-//     this.setState(state => {
-//       return {
-//         isSignedIn: true,
-//         deliverer:  deliverer
-//       }
-//     })
-//   }
-//   catch (e) {
-//     throw e
-//   }
-// }
+    this.setState(state => {
+      return {
+        isSignedIn: true,
+        deliverer:  deliverer
+      }
+    })
+  }
+  catch (e) {
+    throw e
+  }
+}
 
 
-// signOutDeliverere = () => {
-//   authService.signOut()
+signOutDeliverere = () => {
+  authService.signOut()
 
-//   this.setState(state => {
-//     return {
-//       isSignedIn: false,
-//       deliverer: {}
-//     }
-//   })
-// }
+  this.setState(state => {
+    return {
+      isSignedIn: false,
+      deliverer: {}
+    }
+  })
+}
 
 signUpDeliverer = async (credentials) => {
   
@@ -87,22 +87,7 @@ render() {
 
   return (
     <div className="App">
-      {/* <Link to='/history'>History</Link>
-      <Link to='/'>Dashboar</Link> */}
-      {/* <History /> */}
-      {/* <h1>Deliveries</h1>
-      {deliveries.map(delivery => {
-      return (
-        <div>
-          <Delivery delivery={delivery} />
-        </div>
-
-      );
-      
-      })} */}
-
       <nav>
-        <div><Link to="/"></Link></div>
         {
           isSignedIn && 
           <div>
@@ -110,10 +95,6 @@ render() {
           </div>
         }
 
-
-      <div>
-        <Link to='/history'>History</Link>
-      </div>
         {
           isSignedIn && 
           <div><Link to="/history">My history</Link></div>
