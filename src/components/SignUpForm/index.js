@@ -4,13 +4,13 @@ import { signUp } from '../../lib/apiService';
 
 const handleSubmitForm = async (e, form, setForm) => {
         e.preventDefault()
-        const { name, email, password } = form;
+        const { lastName, firstName, email, password } = form;
         // const  { handleSignUp } = this.props;
         // console.log(this.props);
 
         try {
 
-            await signUp({name, email, password});
+            await signUp({lastName, firstName, email, password});
             // await handleSignUp({name, email, password})
         } catch(e) {
 
@@ -40,7 +40,8 @@ const SignUpForm = () => {
         
     const [form, setForm] = useState({
         form:{
-            name: '',
+            firstName: '',
+            lastName: '',
             email: '',
             password: '',
             showError: false
@@ -54,14 +55,26 @@ const SignUpForm = () => {
                 handleSubmitForm(e, form, setForm);
             }}>
                 <div>
-                    <label>Name</label>
+                    <label>LastName</label>
                     <input 
                         type="text" 
-                        name='name'
+                        name='lastName'
                         onChange={(e) => {
                             handleTextInput(e, form, setForm);
                         }}
-                        value={form.name}
+                        value={form.lastName}
+                    />
+                </div>
+
+                <div>
+                    <label>FirstName</label>
+                    <input 
+                        type="text" 
+                        name='firstName'
+                        onChange={(e) => {
+                            handleTextInput(e, form, setForm);
+                        }}
+                        value={form.firstName}
                     />
                 </div>
 

@@ -17,9 +17,8 @@ console.log(BASE_URL)
 export const getProfile = async ()=> {
     try {
         const response = await axiosClient.get('/app/profile')
-        const {user} = response.data
-
-        return user
+        const {deliverer} = response.data
+        return deliverer
 
     } catch(e) {
         throw e
