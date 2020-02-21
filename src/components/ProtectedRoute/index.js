@@ -32,7 +32,7 @@ function ProtectedRoute ({ component: Component, ...rest }) {
       <Route
         {...rest}
         render={props =>
-          authService.isAuthenticated() ? (
+          authService.isAuthenticated("Protected") ? (
             <Component {...props} {...rest} />
           ) : (
             <Redirect

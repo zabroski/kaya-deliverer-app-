@@ -50,7 +50,7 @@ export const login = async (data) => {
         const response = await axiosClient.post('/auth/login', data)
         const { token, deliverer } = response.data
 
-        localStorage.setItem('token', token)
+        await localStorage.setItem('token', token)
         return deliverer
 
     } catch(e) {

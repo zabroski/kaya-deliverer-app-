@@ -1,7 +1,7 @@
 const authService = {
     isAuthenticated: () => {
         const token = localStorage.getItem('token')
-            return token ? true : false
+        return token ? true : false
     },
 
     signOut: () => {
