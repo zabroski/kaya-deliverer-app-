@@ -75,8 +75,8 @@ signUpDeliverer = async (credentials) => {
   
   try {
     await signUp(credentials)
-    const newDeliverere = {email: credentials.email, password: credentials.password}
-    this.loginUser(newDeliverere)
+    const newDeliverer = {email: credentials.email, password: credentials.password}
+    this.loginDeliverer(newDeliverer)
   } catch (e) {
     throw e
   }
@@ -93,14 +93,17 @@ render() {
         {isSignedIn && <Link to='/deliverers'>Dashboar</Link>}
         {isSignedIn && <Link to="/deliveries-history">HISTORY</Link>}
         {!isSignedIn ?  <Link to="/login">SIGN IN</Link> :
-         <button onClick= {this.signOutDeliverere}>Sign Out</button>}
+         <button onClick= {this.signOutDeliverere}>SIGN OUT</button>
+         }
+
         {
             !isSignedIn ? (
-              <div><Link to="/signup">REGISTER</Link></div>
+              <Link to="/signup">REGISTER</Link>
             ) : (
-              null
+              <button onClick= {this.signOutDeliverere}>SIGN OUT</button>
             )
           }
+          
       </nav>
     <main>
 
@@ -114,7 +117,7 @@ render() {
       <Route 
         exact={true}
         path='/signup' 
-        render = {(props) => <SignupPage {...props} handleSignUp={this.signUpDeliverer} isSignedIn={isSignedIn} />}/>
+        render = {(props) => <SignupPage {...props} handleSignup={this.signUpDeliverer} isSignedIn={isSignedIn} />}/>
       <ProtectedRoute 
         exact={true}
         path='/deliverers'

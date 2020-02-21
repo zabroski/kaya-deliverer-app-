@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { signUp } from '../../lib/apiService';
-// import {Redirect} from 'react-router'
+import {Redirect} from 'react-router'
 
 const handleSubmitForm = async (e, form, setForm) => {
         e.preventDefault()
@@ -34,6 +34,12 @@ const handleTextInput = (e, form, setForm) => {
         form: form.form
     });
 }
+// const { isSignedIn} = this.props
+
+// if (isSignedIn) {
+//     return <Redirect to="/login" />
+// }
+
 
 const SignUpForm = () => {
         
@@ -46,15 +52,16 @@ const SignUpForm = () => {
             showError: false
         }
     });
-
+    
     return(
+        
+        
+        
         <div>
             <p className="sign-form-title">Let's start with creating your <br/> account</p>
             <form className = "form" onSubmit={(e) => {
                 handleSubmitForm(e, form, setForm);
             }}>
-
-
                 <div>
                     <label>FirstName</label>
                     <input 
@@ -115,13 +122,12 @@ export default SignUpForm;
 
 
 
-
-
 // class SignUpForm extends Component {
 //     constructor(props) {
 //         super(props)
 //         this.state = {
-//             name: '',
+//             lastName: '',
+//             firstName: '',
 //             email: '',
 //             password: '',
 //             showError: false
@@ -130,13 +136,13 @@ export default SignUpForm;
 
 //     handleSummitForm = async (e) => {
 //         e.preventDefault()
-//         const { name, email, password } = this.state
+//         const { lastName, firstName, email, password } = this.state
 //         const  { handleSignUp } = this.props;
 //         console.log(this.props);
 
 //         try {
 
-//             await handleSignUp({name, email, password})
+//             await handleSignUp({lastName, firstName, email, password})
 //         } catch(e) {
 //             this.setState(state => {
 //                 return { showError : true}
@@ -154,22 +160,36 @@ export default SignUpForm;
 //     render() {
 //         const { isSignedIn} = this.props
 //         if (isSignedIn) {
-//             return <Redirect to="/dashboardPage" />
+//             return <Redirect to="/dashboard" />
 //         }
 
 //         return(
 //             <div>
 //                 <h1 className="sign-form-title">Sign up</h1>
 //                 <form className = "sign-up-form" onSubmit={this.handleSummitForm}>
+                    
+
 //                     <div>
-//                         <label>Name</label>
+//                         <label>FirstName</label>
 //                         <input 
 //                         type="text" 
-//                         name='name'
+//                         name='firstName'
 //                         onChange={this.handleTextInput}
-//                         value ={this.state.name}/>
+//                         value ={this.state.firstName}/>
 
 //                     </div>
+                    
+//                     <div>
+//                         <label>LastName</label>
+//                         <input 
+//                         type="text" 
+//                         name='lastName'
+//                         onChange={this.handleTextInput}
+//                         value ={this.state.lastName}/>
+
+//                     </div>
+
+                  
 //                     <div>
 //                         <label>Email</label>
 //                         <input 
