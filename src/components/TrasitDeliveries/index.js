@@ -1,11 +1,11 @@
 import React,{useState, useEffect} from 'react';
-import {getDeliveriesHistories} from '../../lib/apiService';
+import {getTransitDeliveries} from '../../lib/apiService';
 import Delivery from '../Delivery';
 
 
 
 const TransitDeliveries = async (setDeliveries) => {
-    const deliveries = await getDeliveriesHistories();
+    const deliveries = await getTransitDeliveries();
     setDeliveries(deliveries);
   }
 

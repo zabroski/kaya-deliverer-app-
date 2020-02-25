@@ -3,6 +3,7 @@ import './App.css';
 // import { getDeliveries, getDeliverer} from './lib/apiService';
 // import DeliveryPage from './components/DeliveryPage';
 import HistoryPage from './components/HistoryPage';
+import TransitDeliveries from './components/TrasitDeliveries'
 import DashboardPage from './components/DashboardPage';
 import SignupPage from './components/SignupPage';
 import LoginPage from  './components/LoginPage';
@@ -41,6 +42,7 @@ render() {
         <nav>
           {authService.isAuthenticated() && <Link to='/'>Dashboard</Link>}
           {authService.isAuthenticated() && <Link to="/deliveries-history">HISTORY</Link>}
+          {authService.isAuthenticated() && <Link to="/transit-deliveries">ANONYM</Link>}
           {!authService.isAuthenticated() ?  <Link to="/login">SIGN IN</Link> :
           <button onClick= {this.signOutDeliverere}>SIGN OUT</button>
           }
@@ -78,6 +80,13 @@ render() {
             path='/deliveries-history'
             deliverer={deliverer} 
             component={HistoryPage}
+          />
+
+          <ProtectedRoute 
+            exact={true}
+            path='/transit-deliveries'
+            deliverer={deliverer} 
+            component={TransitDeliveries}
           />
         </main>
       </div>
