@@ -11,21 +11,6 @@ const axiosClient = axios.create({
     }
 })
 
-console.log(BASE_URL)
-
-
-export const getProfile = async ()=> {
-    try {
-        const response = await axiosClient.get('/app/profile')
-        const {deliverer} = response.data
-        return deliverer
-
-    } catch(e) {
-        throw e
-
-    }
-}
-
 
 export const signUp = async (data) => {
 
@@ -116,6 +101,17 @@ export const getDeliveriesHistories = async () => {
     }
 }
 
+
+
+export const getTransitDeliveries = async () => {
+    try {
+        const response = await axiosClient.get('/transit-deliveries');
+        return response.data;
+       
+    } catch(e) {
+        throw e
+    }
+}
 
 
 
