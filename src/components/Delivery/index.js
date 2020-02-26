@@ -38,7 +38,7 @@ function Delivery(props) {
             {status === "" && <button onClick={async () => {
                 await confirmPickup(delivery.id);
                 setStatus("in transit");
-            }}>Dropping name</button>}
+            }}>Pickup</button>}
 
             {status === "in transit" && 
             <button onClick={async () => {

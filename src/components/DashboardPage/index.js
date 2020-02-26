@@ -1,38 +1,78 @@
 import React,{useState, useEffect} from 'react';
-import { getDeliveries} from '../../lib/apiService';
+import { getDeliveries, acceptedDelivery} from '../../lib/apiService';
 import Delivery from '../Delivery';
 
-const handleGetDeliveries = async (setDeliveries) => {
-    const deliveries = await getDeliveries();
-    console.log(deliveries);
-    setDeliveries(deliveries);
-  }
+const handleGetNewDeliveries = async (setDeliveries) => {
+  return await getDeliveries();
+}
 
+const acceptedNewDeliveries = async (setDeliveries) => {
+  return await  acceptedDelivery();
+}
 
 function DashboardPage () {
 
-    let [deliveries, setDeliveries] = useState([]);
+    let [newDeliveries, setNewDeliveries] = useState([]);
+    let [acceptedDeliveries, setAcceptedDeliveries] = useState([]);
+
+    // useEffect(() => {
+    //    const deliveries = handleGetNewDeliveries();
+    //    setNewDeliveries(deliveries);
+    // }, []);
+
 
     useEffect(() => {
-       handleGetDeliveries(setDeliveries);
-    }, []);
+      handleGetNewDeliveries( setNewDeliveries);
+     
+   }, []);
+
+
+
+    useEffect(() => {
+    acceptedNewDeliveries( setAcceptedDeliveries);
+      // setAcceptedDeliveries(deliveries);
+   }, []);
+
+
+
 
     return(
         <div>
             <h1>Deliveries</h1>
-            {/* <div>
-              <h1>{user.name &&  `Welcome back ${user.name}`}</h1>
-            </div> */}
-            {deliveries.map(delivery => {
-            return (
-                <div>
-                    <Delivery delivery={delivery} />
-                </div>
-                
-      );
-      })}
+
+            {newDeliveries.map(delivery => {
+              return (
+                  <div>
+                      <Delivery delivery={delivery} />
+                  </div>
+              );
+            })}
+
+
+
+        <div>
+            <h1>Accepted Deliveries</h1>
+
+            {acceptedDeliveries.map(delivery => {
+              return (
+                  <div>
+                      <Delivery delivery={delivery} />
+                  </div>
+              );
+            })}
         </div>
+
+        </div>
+
+       
+
+
+
+
+
     )
+
+    
 
 };
 

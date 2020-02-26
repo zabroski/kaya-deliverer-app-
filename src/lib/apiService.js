@@ -70,7 +70,6 @@ export const getDeliveries = async () => {
 
 export const confirmPickup = async (deliveryId) => {
     try{
-        // let deliveryId = localStorage.getItem('deliveryId')
         const response = await axiosClient.post(`/confirm-pickup/${deliveryId}`);
         return response.data
 
@@ -90,6 +89,19 @@ export const confirmDropOff = async (deliveryId) => {
         throw e
     }
 };
+
+
+export const acceptedDelivery = async (deliveryId) => {
+    try{
+        const response = await axiosClient.post(`/accept-delivery/${deliveryId}`);
+        return response.data
+
+    }catch(e){
+        throw e
+    }
+};
+
+
 
 export const getDeliveriesHistories = async () => {
     try {
