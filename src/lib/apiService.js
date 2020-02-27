@@ -91,9 +91,9 @@ export const confirmDropOff = async (deliveryId) => {
 };
 
 
-export const acceptedDelivery = async (deliveryId) => {
+export const getAcceptedDeliveries = async (deliveryId) => {
     try{
-        const response = await axiosClient.post(`/accepted-delivery/${deliveryId}`);
+        const response = await axiosClient.get("/accepted-deliveries");
         return response.data
 
     }catch(e){
@@ -102,9 +102,9 @@ export const acceptedDelivery = async (deliveryId) => {
 };
 
 
-export const getNewDelivery = async (deliveryId) => {
+export const getNewDeliveries = async (deliveryId) => {
     try{
-        const response = await axiosClient.post(`/new-delivery/${deliveryId}`);
+        const response = await axiosClient.get("/new-deliveries");
         return response.data
 
     }catch(e){

@@ -1,15 +1,15 @@
 import React,{useState, useEffect} from 'react';
-import { getDeliveries, getNewDelivery, acceptedDelivery} from '../../lib/apiService';
+import { getDeliveries, getNewDeliveries,  getAcceptedDeliveries} from '../../lib/apiService';
 import Delivery from '../Delivery';
 
 const handleGetNewDeliveries = async (setNewDeliveries) => {
-  const newDeliveries = await getNewDelivery();
+  const newDeliveries = await getNewDeliveries();
   setNewDeliveries(newDeliveries); 
 }
 
 
 const  handleGetAcceptedDeliveries = async (setNewDeliveries) => {
-  const newDeliveries = await acceptedDelivery ();
+  const newDeliveries = await  getAcceptedDeliveries ();
   setNewDeliveries(newDeliveries); 
 }
 
@@ -34,7 +34,7 @@ function DashboardPage () {
 
 
     return(
-        <div>
+        <div className="">
             <h1>Deliveries</h1>
 
             {newDeliveries.map(delivery => {
@@ -44,9 +44,7 @@ function DashboardPage () {
                   </div>
               );
             })}
-
-
-
+            
         <div>
             {/* <h1>Accepted Deliveries</h1> */}
 
@@ -61,17 +59,7 @@ function DashboardPage () {
 
         </div>
 
-       
-
-
-
-
-
     )
-
-    
-
 };
-
 
 export default DashboardPage;
