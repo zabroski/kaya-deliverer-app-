@@ -1,35 +1,32 @@
 import React,{useState, useEffect} from 'react';
-import { getDeliveries, acceptedDelivery} from '../../lib/apiService';
+import { getDeliveries, getNewDelivery, acceptedDelivery} from '../../lib/apiService';
 import Delivery from '../Delivery';
 
-const handleGetNewDeliveries = async (setDeliveries) => {
-  return await getDeliveries();
+const handleGetNewDeliveries = async (setNewDeliveries) => {
+  const newDeliveries = await getNewDelivery();
+  setNewDeliveries(newDeliveries); 
 }
 
-const acceptedNewDeliveries = async (setDeliveries) => {
-  return await  acceptedDelivery();
+
+const  handleGetAcceptedDeliveries = async (setNewDeliveries) => {
+  const newDeliveries = await acceptedDelivery ();
+  setNewDeliveries(newDeliveries); 
 }
+
 
 function DashboardPage () {
 
     let [newDeliveries, setNewDeliveries] = useState([]);
     let [acceptedDeliveries, setAcceptedDeliveries] = useState([]);
 
-    // useEffect(() => {
-    //    const deliveries = handleGetNewDeliveries();
-    //    setNewDeliveries(deliveries);
-    // }, []);
-
-
     useEffect(() => {
-      handleGetNewDeliveries( setNewDeliveries);
-     
-   }, []);
+       handleGetNewDeliveries(setNewDeliveries);
+    }, []);
 
 
 
     useEffect(() => {
-    acceptedNewDeliveries( setAcceptedDeliveries);
+      handleGetAcceptedDeliveries( setAcceptedDeliveries);
       // setAcceptedDeliveries(deliveries);
    }, []);
 
@@ -51,7 +48,7 @@ function DashboardPage () {
 
 
         <div>
-            <h1>Accepted Deliveries</h1>
+            {/* <h1>Accepted Deliveries</h1> */}
 
             {acceptedDeliveries.map(delivery => {
               return (
