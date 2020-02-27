@@ -123,3 +123,10 @@ nav button:visited, nav a:visited {
 nav button:hover {
   cursor: pointer;
 }
+
+
+.dashboard {
+  display: flex;
+  flex-direction: row;
+ 
+}

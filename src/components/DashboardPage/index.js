@@ -34,7 +34,7 @@ function DashboardPage () {
 
 
     return(
-        <div className="">
+        <div className="dashboard">
             <h1>Deliveries</h1>
 
             {newDeliveries.map(delivery => {
