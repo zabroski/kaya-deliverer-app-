@@ -3,7 +3,12 @@ import {confirmPickup,confirmDropOff, acceptedDelivery} from '../../lib/apiServi
 
 function Delivery(props) {
     
-    let delivery = props.delivery;
+    var {
+        delivery,
+        onStatusUpdated
+    } = props;
+
+    // let delivery = props.delivery;
     let [status, setStatus] = useState([]);
 
     useEffect(() => {
@@ -50,13 +55,14 @@ function Delivery(props) {
 
             {status === "new" &&
             <button onClick={async () => {
-                await acceptedDelivery (delivery.id)
+                await acceptedDelivery (delivery.id);
+                onStatusUpdated(true);
                 setStatus('accepted')
             }}>accpeted</button>}
 
             {status === "accepted" &&
             <button onClick={async () => {
-                await confirmPickup(delivery.id)
+                await confirmPickup(delivery.id);
                 setStatus('in trasit')
             }}>Pickup</button>}
         </div>

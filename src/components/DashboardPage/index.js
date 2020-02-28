@@ -37,10 +37,20 @@ function DashboardPage () {
         <div className="dashboard">
           <div>
             <h1>Deliveries</h1>
-            {newDeliveries.map(delivery => {
+            {newDeliveries.map((delivery, key) => {
               return (
                   <div className="deliveries">
-                      <Delivery delivery={delivery} />
+                      delivery key is: {key}
+                      <Delivery delivery={delivery} onStatusUpdated={() => {
+                        const acceptedDelivery = newDeliveries[key];
+                        newDeliveries.splice(key, 1);
+                        
+                        setNewDeliveries([...newDeliveries]);
+                        
+                        acceptedDeliveries.push(acceptedDelivery);
+                        console.log("broken delivery: ", acceptedDelivery);
+                        setAcceptedDeliveries([acceptedDelivery, ...acceptedDeliveries]);
+                      }} />
                   </div>
               );
             })}
