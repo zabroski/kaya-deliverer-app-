@@ -104,6 +104,11 @@ nav button:hover {
 
 .status{
   color: rgb(88, 196, 88);
-  text-align: left;
+  /* text-align: left; */
 }
 
+button {
+  font-size: 20px;
+  color: red;
+  background-color: black;
+}

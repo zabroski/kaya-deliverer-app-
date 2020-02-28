@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import {confirmPickup,confirmDropOff} from '../../lib/apiService';
+import {confirmPickup,confirmDropOff, getAcceptedDeliveries} from '../../lib/apiService';
 
 function Delivery(props) {
     
@@ -12,13 +12,15 @@ function Delivery(props) {
 
     return (
         <div>
-             {/* <h3>{delivery.id}</h3> */}
-             <h4 className="status">{delivery.status}</h4>
+             <h3>{delivery.id}</h3>
+             <h4 className="status">
+                 {delivery.status}
+             </h4>
 
             {delivery.merchant && 
             <>
                 {delivery.merchant.lastName}
-                {delivery.merchant.firstName}
+                {/* {delivery.merchant.firstName} */}
             </>}
 
 
@@ -45,6 +47,12 @@ function Delivery(props) {
                 await confirmDropOff(delivery.id);
                 setStatus("done");
             }}>Complet trip</button>}
+
+            {status === "new" &&
+            <button onClick={async () => {
+                await 
+                setStatus('accepted')
+            }}>accpeted</button>}
         </div>
  )
 }

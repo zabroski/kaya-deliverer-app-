@@ -78,6 +78,15 @@ export const confirmPickup = async (deliveryId) => {
     }
 };
 
+export const acceptedDelivery = async(deliveryId) => {
+    try{
+        const response = await axiosClient.post(`/accept-delivery/${deliveryId}`)
+        return response.data
+    }catch(e){
+        throw e
+    }
+}
+
 
 
 export const confirmDropOff = async (deliveryId) => {
@@ -89,6 +98,7 @@ export const confirmDropOff = async (deliveryId) => {
         throw e
     }
 };
+
 
 
 export const getAcceptedDeliveries = async (deliveryId) => {
