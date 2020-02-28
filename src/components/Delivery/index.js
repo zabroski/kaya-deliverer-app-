@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import {confirmPickup,confirmDropOff, getAcceptedDeliveries} from '../../lib/apiService';
+import {confirmPickup,confirmDropOff, acceptedDelivery} from '../../lib/apiService';
 
 function Delivery(props) {
     
@@ -50,9 +50,15 @@ function Delivery(props) {
 
             {status === "new" &&
             <button onClick={async () => {
-                await 
+                await acceptedDelivery (delivery.id)
                 setStatus('accepted')
             }}>accpeted</button>}
+
+            {status === "accepted" &&
+            <button onClick={async () => {
+                await confirmPickup(delivery.id)
+                setStatus('in trasit')
+            }}>Pickup</button>}
         </div>
  )
 }
