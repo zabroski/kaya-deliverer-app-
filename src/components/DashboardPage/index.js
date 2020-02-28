@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import { getDeliveries, getNewDeliveries,  getAcceptedDeliveries} from '../../lib/apiService';
+import {getNewDeliveries,  getAcceptedDeliveries} from '../../lib/apiService';
 import Delivery from '../Delivery';
 
 const handleGetNewDeliveries = async (setNewDeliveries) => {
@@ -35,27 +35,28 @@ function DashboardPage () {
 
     return(
         <div className="dashboard">
+          <div>
             <h1>Deliveries</h1>
-
             {newDeliveries.map(delivery => {
               return (
-                  <div>
+                  <div className="deliveries">
                       <Delivery delivery={delivery} />
                   </div>
               );
             })}
-            
-        <div>
-            {/* <h1>Accepted Deliveries</h1> */}
+          </div>
+           
+          <div>
+              <h1>Accepted</h1>
 
-            {acceptedDeliveries.map(delivery => {
-              return (
-                  <div>
-                      <Delivery delivery={delivery} />
-                  </div>
-              );
-            })}
-        </div>
+              {acceptedDeliveries.map(delivery => {
+                return (
+                    <div>
+                        <Delivery delivery={delivery} />
+                    </div>
+                );
+              })}
+          </div>
 
         </div>
 

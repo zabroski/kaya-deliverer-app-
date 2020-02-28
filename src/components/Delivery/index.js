@@ -12,12 +12,12 @@ function Delivery(props) {
 
     return (
         <div>
-             <h3>{delivery.id}</h3>
-             <h4>{delivery.status}</h4>
+             {/* <h3>{delivery.id}</h3> */}
+             <h4 className="status">{delivery.status}</h4>
 
             {delivery.merchant && 
             <>
-                {delivery.merchant.lastName},
+                {delivery.merchant.lastName}
                 {delivery.merchant.firstName}
             </>}
 
@@ -25,7 +25,7 @@ function Delivery(props) {
 
             {delivery.addresses.map((address) => {
                 return (
-                <ul>
+                <ul className="address">
                     <li>{address.type}</li>
                     <li>{address.street}</li>
                     <li>{address.zipCode}</li>
