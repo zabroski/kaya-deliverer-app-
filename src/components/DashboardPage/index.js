@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import {getNewDeliveries,  getAcceptedDeliveries} from '../../lib/apiService';
+import {getNewDeliveries,  getAcceptedDeliveries, acceptedDelivery} from '../../lib/apiService';
 import Delivery from '../Delivery';
 
 const handleGetNewDeliveries = async (setNewDeliveries) => {
@@ -41,15 +41,26 @@ function DashboardPage () {
               return (
                   <div className="deliveries">
                       delivery key is: {key}
-                      <Delivery delivery={delivery} onStatusUpdated={() => {
-                        const acceptedDelivery = newDeliveries[key];
-                        newDeliveries.splice(key, 1);
+                      <Delivery delivery={delivery} onStatusUpdated={(deliveryFromDeliveryComponent) => {
+                        // const acceptedDelivery = newDeliveries[key];
+
+                        /**
+                         * Removed updated delivery from new deliveries since the status was changed to accepted
+                         */
+                        const tmpNewDeliveries = newDeliveries;
+                        tmpNewDeliveries.splice(key, 1);
+                        setNewDeliveries([]);
+                        setNewDeliveries([...tmpNewDeliveries]);
                         
-                        setNewDeliveries([...newDeliveries]);
-                        
-                        acceptedDeliveries.push(acceptedDelivery);
-                        console.log("broken delivery: ", acceptedDelivery);
-                        setAcceptedDeliveries([acceptedDelivery, ...acceptedDeliveries]);
+                        /**
+                         * Move the updatedDelivery to accepted deliveries list
+                         */
+                        // acceptedDeliveries.push(acceptedDelivery);
+                        // console.log("broken delivery: ", acceptedDelivery);
+                        const tmpAcceptedDeliveries = acceptedDeliveries;
+                        setAcceptedDeliveries([]);
+                        console.log(" --> ", acceptedDelivery);
+                        setAcceptedDeliveries([deliveryFromDeliveryComponent, ...tmpAcceptedDeliveries]);
                       }} />
                   </div>
               );

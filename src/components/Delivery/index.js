@@ -8,29 +8,32 @@ function Delivery(props) {
         onStatusUpdated
     } = props;
 
+    const [state, setState] = useState({
+        delivery: delivery
+    });
     // let delivery = props.delivery;
-    let [status, setStatus] = useState([]);
+    // let [status, setStatus] = useState([]);
 
-    useEffect(() => {
-        setStatus(delivery.status);
-    }, [delivery]); // line 6
+    // useEffect(() => {
+    //     setStatus(delivery.status);
+    // }, [delivery]); // line 6
 
     return (
         <div>
-             <h3>{delivery.id}</h3>
+             <h3>{state.delivery.id}</h3>
              <h4 className="status">
-                 {delivery.status}
+                 {state.delivery.status}
              </h4>
 
-            {delivery.merchant && 
+            {state.delivery.merchant && 
             <>
-                {delivery.merchant.lastName}
+                {state.delivery.merchant.lastName}
                 {/* {delivery.merchant.firstName} */}
             </>}
 
 
 
-            {delivery.addresses.map((address) => {
+            {state.delivery.addresses.map((address) => {
                 return (
                 <ul className="address">
                     <li>{address.type}</li>
@@ -42,29 +45,48 @@ function Delivery(props) {
                 )
 
             })}
-            {status === "" && <button onClick={async () => {
+            {/* {status === "" && <button onClick={async () => {
                 await confirmPickup(delivery.id);
                 setStatus("in transit");
-            }}>Pickup</button>}
+            }}>Pickup</button>} */}
 
-            {status === "in transit" && 
-            <button onClick={async () => {
-                await confirmDropOff(delivery.id);
-                setStatus("done");
-            }}>Complet trip</button>}
+           
 
-            {status === "new" &&
+            {state.delivery.status === "new" &&
             <button onClick={async () => {
-                await acceptedDelivery (delivery.id);
-                onStatusUpdated(true);
-                setStatus('accepted')
+                await acceptedDelivery (state.delivery.id);
+                state.delivery.status = "accepted";
+                setState({
+                    delivery: state.delivery
+                });
+
+                onStatusUpdated(state.delivery);
+
+                // setCurrentDelivery(currentDelivery);
+               // setStatus('accepted')
             }}>accpeted</button>}
 
-            {status === "accepted" &&
+            {state.delivery.status === "accepted" &&
             <button onClick={async () => {
                 await confirmPickup(delivery.id);
-                setStatus('in trasit')
+                state.delivery.status = "in transit";
+                setState({
+                    delivery: state.delivery
+                });
+                // setCurrentDelivery(currentDelivery);
+                //setStatus('in transit')
             }}>Pickup</button>}
+
+            {state.delivery.status === "in transit" && 
+            <button onClick={async () => {
+                await confirmDropOff(delivery.id);
+                state.delivery.status = "done";
+                setState({
+                    delivery: state.delivery
+                });
+                // setCurrentDelivery(currentDelivery);
+                //setStatus("done");
+            }}>Drop Off</button>}
         </div>
  )
 }
