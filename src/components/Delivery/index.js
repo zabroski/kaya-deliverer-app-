@@ -20,10 +20,10 @@ function Delivery(props) {
 
     return (
         <div>
-             <h3>{state.delivery.id}</h3>
+             {/* <h3>{state.delivery.id}</h3>
              <h4 className="status">
                  {state.delivery.status}
-             </h4>
+             </h4> */}
 
             {state.delivery.merchant && 
             <>

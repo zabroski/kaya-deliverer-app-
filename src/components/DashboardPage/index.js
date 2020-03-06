@@ -40,7 +40,7 @@ function DashboardPage () {
             {newDeliveries.map((delivery, key) => {
               return (
                   <div className="deliveries">
-                      delivery key is: {key}
+                      {/* delivery key is: {key} */}
                       <Delivery delivery={delivery} onStatusUpdated={(deliveryFromDeliveryComponent) => {
                         // const acceptedDelivery = newDeliveries[key];
 
