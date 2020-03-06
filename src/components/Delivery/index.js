@@ -20,16 +20,14 @@ function Delivery(props) {
 
     return (
         <div>
-             {/* <h3>{state.delivery.id}</h3>
-             <h4 className="status">
-                 {state.delivery.status}
-             </h4> */}
-
+             {/* <h3>{state.delivery.id}</h3> */}
+             <h4 className="status">{state.delivery.status} {state.delivery.merchant.lastName}</h4>
+             
             {state.delivery.merchant && 
-            <>
-                {state.delivery.merchant.lastName}
+            <div>
+                {/* {state.delivery.merchant.lastName} */}
                 {/* {delivery.merchant.firstName} */}
-            </>}
+            </div>}
 
 
 
@@ -55,7 +53,7 @@ function Delivery(props) {
             {state.delivery.status === "new" &&
             <button onClick={async () => {
                 await acceptedDelivery (state.delivery.id);
-                state.delivery.status = "accepted";
+                state.delivery.status = "picking Up";
                 setState({
                     delivery: state.delivery
                 });
@@ -66,10 +64,10 @@ function Delivery(props) {
                // setStatus('accepted')
             }}>accpeted</button>}
 
-            {state.delivery.status === "accepted" &&
+            {state.delivery.status === "picking Up" &&
             <button onClick={async () => {
                 await confirmPickup(delivery.id);
-                state.delivery.status = "in transit";
+                state.delivery.status = "Dropping Off";
                 setState({
                     delivery: state.delivery
                 });
@@ -77,7 +75,7 @@ function Delivery(props) {
                 //setStatus('in transit')
             }}>Pickup</button>}
 
-            {state.delivery.status === "in transit" && 
+            {state.delivery.status === "Dropping Off" && 
             <button onClick={async () => {
                 await confirmDropOff(delivery.id);
                 state.delivery.status = "done";
