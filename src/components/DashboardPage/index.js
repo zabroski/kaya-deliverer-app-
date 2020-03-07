@@ -36,7 +36,7 @@ function DashboardPage () {
     return(
         <div className="dashboard">
           <div>
-            <h1>Deliveries</h1>
+            <h1 className="deliveries-title">Deliveries</h1>
             {newDeliveries.map((delivery, key) => {
               return (
                   <div className="deliveries">
@@ -68,7 +68,7 @@ function DashboardPage () {
           </div>
            
           <div>
-              <h1>Accepted</h1>
+              <h1 className="accepted-title">Accepted</h1>
 
               {acceptedDeliveries.map(delivery => {
                 return (

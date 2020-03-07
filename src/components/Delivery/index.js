@@ -29,7 +29,7 @@ function Delivery(props) {
             {state.delivery.addresses.map((address) => {
                 return (
                 <ul className="address">
-                    <li>{address.type}</li>
+                    <li className="address-type">{address.type}</li>
                     <li>{address.street}</li>
                     <li>{address.zipCode}</li>
                     <li>{address.country}</li>
@@ -50,7 +50,7 @@ function Delivery(props) {
 
                 onStatusUpdated(state.delivery);
 
-            }}>accpeted</button>}
+            }}>Accpeted Delivery</button>}
 
             {state.delivery.status === "picking Up" &&
             <button className="pickUp-button" onClick={async () => {
