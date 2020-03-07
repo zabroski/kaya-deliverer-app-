@@ -11,21 +11,16 @@ function Delivery(props) {
     const [state, setState] = useState({
         delivery: delivery
     });
-    // let delivery = props.delivery;
-    // let [status, setStatus] = useState([]);
-
-    // useEffect(() => {
-    //     setStatus(delivery.status);
-    // }, [delivery]); // line 6
+ 
 
     return (
         <div>
              {/* <h3>{state.delivery.id}</h3> */}
-             <h4 className="status">{state.delivery.status} {state.delivery.merchant.lastName}</h4>
+             <h4 className="status">{state.delivery.status} </h4>
              
             {state.delivery.merchant && 
             <div>
-                {/* {state.delivery.merchant.lastName} */}
+                {state.delivery.merchant.lastName}
                 {/* {delivery.merchant.firstName} */}
             </div>}
 
@@ -43,15 +38,10 @@ function Delivery(props) {
                 )
 
             })}
-            {/* {status === "" && <button onClick={async () => {
-                await confirmPickup(delivery.id);
-                setStatus("in transit");
-            }}>Pickup</button>} */}
-
-           
+          
 
             {state.delivery.status === "new" &&
-            <button onClick={async () => {
+            <button className="accept-button" onClick={async () => {
                 await acceptedDelivery (state.delivery.id);
                 state.delivery.status = "picking Up";
                 setState({
@@ -60,30 +50,24 @@ function Delivery(props) {
 
                 onStatusUpdated(state.delivery);
 
-                // setCurrentDelivery(currentDelivery);
-               // setStatus('accepted')
             }}>accpeted</button>}
 
             {state.delivery.status === "picking Up" &&
-            <button onClick={async () => {
+            <button className="pickUp-button" onClick={async () => {
                 await confirmPickup(delivery.id);
                 state.delivery.status = "Dropping Off";
                 setState({
                     delivery: state.delivery
                 });
-                // setCurrentDelivery(currentDelivery);
-                //setStatus('in transit')
             }}>Pickup</button>}
 
             {state.delivery.status === "Dropping Off" && 
-            <button onClick={async () => {
+            <button className="dropOff-button" onClick={async () => {
                 await confirmDropOff(delivery.id);
                 state.delivery.status = "done";
                 setState({
                     delivery: state.delivery
                 });
-                // setCurrentDelivery(currentDelivery);
-                //setStatus("done");
             }}>Drop Off</button>}
         </div>
  )

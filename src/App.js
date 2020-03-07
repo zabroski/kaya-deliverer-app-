@@ -39,12 +39,12 @@ render() {
   return (
     <div className="App">
         {authService.isAuthenticated()}
-        <nav>
+        <nav className="nav-menu">
           {authService.isAuthenticated() && <Link to='/'>Dashboard</Link>}
           {authService.isAuthenticated() && <Link to="/deliveries-history">HISTORY</Link>}
           {authService.isAuthenticated() && <Link to="/transit-deliveries">ANONYM</Link>}
           {!authService.isAuthenticated() ?  <Link to="/login">SIGN IN</Link> :
-          <button onClick= {this.signOutDeliverere}>SIGN OUT</button>
+          <button className="signUp-button" onClick= {this.signOutDeliverere}>Sign Out</button>
           }
 
           {
@@ -56,7 +56,7 @@ render() {
           }
             
         </nav>
-        <main>
+        <main className="main-menu">
 
           <Route 
             exact={true}
