@@ -196,6 +196,7 @@ nav button:hover {
 
 
 
+/* <======= side menu =========> */
 
 .sidenav {
   height: 100%; /* 100% Full-height */
@@ -233,6 +234,12 @@ nav button:hover {
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+}
+
+
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
 }
 
 

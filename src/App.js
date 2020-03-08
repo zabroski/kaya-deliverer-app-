@@ -21,6 +21,7 @@ import  ProtectedRoute from './components/ProtectedRoute';
       deliverer: {}
     }
   }
+  
 
 signOutDeliverere = () => {
   authService.signOut()
@@ -32,6 +33,22 @@ signOutDeliverere = () => {
     }
   })
 }
+
+
+openNav = () => {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+closeNav = () => {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+  document.body.style.backgroundColor = "white";
+}
+
+
+
 
 render() {
   const { deliverer } = this.state;
@@ -58,7 +75,7 @@ render() {
 
 
           <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="www.google.com" class="closebtn" onclick="return false">&times;</a>
             <a href="www.google.com">About</a>
             <a href="www.google.com">Services</a>
             <a href="www.google.com">Clients</a>
