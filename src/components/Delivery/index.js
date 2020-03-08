@@ -5,23 +5,31 @@ function Delivery(props) {
     
     var {
         delivery,
-        onStatusUpdated
+        onStatusUpdated,
+        // onUpdated
     } = props;
 
     const [state, setState] = useState({
         delivery: delivery
     });
  
+    //null == undefined == 0 == false
+    if(false && (1 + 1)){
+
+    }
 
     return (
         <div>
-             {/* <h3>{state.delivery.id}</h3> */}
-             <h4 className="status">{state.delivery.status} </h4>
+             <h3>{state.delivery.id}</h3>
+             <h4 className="status">
+                 {state.delivery.status} {''}
+                {state.delivery.merchant && state.delivery.merchant.lastName}
+            </h4>
              
             {state.delivery.merchant && 
             <div>
-                {state.delivery.merchant.lastName}
-                {/* {delivery.merchant.firstName} */}
+                {/* {state.delivery.merchant.lastName}
+                {delivery.merchant.firstName} */}
             </div>}
 
 
@@ -49,6 +57,7 @@ function Delivery(props) {
                 });
 
                 onStatusUpdated(state.delivery);
+                // onUpdated(state.delivery)
 
             }}>Accpeted Delivery</button>}
 
@@ -68,7 +77,7 @@ function Delivery(props) {
                 setState({
                     delivery: state.delivery
                 });
-            }}>Drop Off</button>}
+            }}>Complete Kaya</button>}
         </div>
  )
 }

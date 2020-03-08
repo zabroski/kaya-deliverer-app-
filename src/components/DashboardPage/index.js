@@ -27,11 +27,7 @@ function DashboardPage () {
 
     useEffect(() => {
       handleGetAcceptedDeliveries( setAcceptedDeliveries);
-      // setAcceptedDeliveries(deliveries);
    }, []);
-
-
-
 
     return(
         <div className="dashboard">
@@ -40,8 +36,8 @@ function DashboardPage () {
             {newDeliveries.map((delivery, key) => {
               return (
                   <div className="deliveries">
-                      {/* delivery key is: {key} */}
                       <Delivery delivery={delivery} onStatusUpdated={(deliveryFromDeliveryComponent) => {
+                        
                         // const acceptedDelivery = newDeliveries[key];
 
                         /**
@@ -55,8 +51,7 @@ function DashboardPage () {
                         /**
                          * Move the updatedDelivery to accepted deliveries list
                          */
-                        // acceptedDeliveries.push(acceptedDelivery);
-                        // console.log("broken delivery: ", acceptedDelivery);
+                       
                         const tmpAcceptedDeliveries = acceptedDeliveries;
                         setAcceptedDeliveries([]);
                         console.log(" --> ", acceptedDelivery);
@@ -73,7 +68,10 @@ function DashboardPage () {
               {acceptedDeliveries.map(delivery => {
                 return (
                     <div>
-                        <Delivery delivery={delivery} />
+                        <Delivery delivery={delivery} onUpdated={(deliveryFromDeliveryComponent) => {
+                          
+                        }} />
+                        
                     </div>
                 );
               })}
