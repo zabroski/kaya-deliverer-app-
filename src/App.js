@@ -40,7 +40,7 @@ render() {
     <div className="App">
         {authService.isAuthenticated()}
         <nav className="nav-menu">
-          {authService.isAuthenticated() && <Link to='/'>Dashboard</Link>}
+          {/* {authService.isAuthenticated() && <Link to='/'>Dashboard</Link>}
           {authService.isAuthenticated() && <Link to="/deliveries-history">HISTORY</Link>}
           {authService.isAuthenticated() && <Link to="/transit-deliveries">ANONYM</Link>}
           {!authService.isAuthenticated() ?  <Link to="/login">SIGN IN</Link> :
@@ -54,7 +54,24 @@ render() {
             null
           )
           }
-            
+             */}
+
+
+          <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="www.google.com">About</a>
+            <a href="www.google.com">Services</a>
+            <a href="www.google.com">Clients</a>
+            <a href="www.google.com">Contact</a>
+          </div>
+          <span onclick="openNav()">open</span>
+
+          <div id="main">
+            ...
+          </div>
+
+
+
         </nav>
         <main className="main-menu">
 
