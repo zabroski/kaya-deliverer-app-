@@ -1,1 +1,0 @@
-import authService from './lib/authService';

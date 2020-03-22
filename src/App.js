@@ -18,7 +18,8 @@ import  ProtectedRoute from './components/ProtectedRoute';
     super(props)
     this.state = {
       isSignedIn: false,
-      deliverer: {}
+      deliverer: {},
+      isMenuOpen: false
     }
   }
   
@@ -74,14 +75,29 @@ render() {
              */}
 
 
-          <div id="mySidenav" class="sidenav">
-            <a href="www.google.com" class="closebtn" onclick="return false">&times;</a>
-            <a href="www.google.com">About</a>
-            <a href="www.google.com">Services</a>
-            <a href="www.google.com">Clients</a>
-            <a href="www.google.com">Contact</a>
+          <div id="mySidenav" class={`sidenav ${!this.state.isMenuOpen? "sidenavClose": ""}`}>
+          <a href="#" class="closebtn" onClick={(e) => {
+            e.preventDefault();
+
+            this.setState({
+              ...this.state,
+              isMenuOpen: !this.state.isMenuOpen
+            });
+          }}>&times;</a>
+          {authService.isAuthenticated() && <Link to='/'>Dashboard</Link>}
+          {authService.isAuthenticated() && <Link to="/deliveries-history">HISTORY</Link>}
+          {authService.isAuthenticated() && <Link to="/transit-deliveries">ANONYM</Link>}
+          {!authService.isAuthenticated() ?  <Link to="/login">SIGN IN</Link> :
+          <button className="signUp-button" onClick= {this.signOutDeliverere}>Sign Out</button>}
           </div>
-          <span onclick="openNav()">open</span>
+          <button onClick={(e) => {
+            e.preventDefault();
+            
+            this.setState({
+              ...this.state,
+              isMenuOpen: !this.state.isMenuOpen
+            });
+          }}>open</button>
 
           <div id="main">
             ...
