@@ -133,7 +133,7 @@ nav button:hover {
 
 
  .nav-menu {
-   display: flex;
+  /* display: flex; */
   background-color: rgb(12, 10, 10);
   flex-direction: row;
   height: 50px;
@@ -142,6 +142,9 @@ nav button:hover {
 
 }
 
+/* .nav-menu a {
+  flex-direction: column;
+} */
 
 .signUp-button{
   color: white;
@@ -194,54 +197,84 @@ nav button:hover {
 
 }
 
+@media screen and (min-width:700px) {
+  .open-button {
+    display: none;
+  
+  }
+  #main {
+    display: none;
+  }
+  .closebtn {
+    display: none;
+  }
 
 
-/* <======= side menu =========> */
-.sidenavClose {
-  width: 0;
-}
-.sidenav {
-  height: 100%; /* 100% Full-height */
-  /* width: 0; 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color: #111; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-}
+  .nav-menu {
+    display: flex;
+    background-color: rgb(12, 10, 10);
+    flex-direction: row;
+    height: 50px;
+    align-items: center;
+    font-family: CronosPro-LtCapt;
+ 
+ }
 
-
-
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
 }
 
+ 
+@media screen and (max-width:414px) {
 
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-
-#main {
-  transition: margin-left .5s;
-  padding: 20px;
+  .sidenavClose {
+    width: 0;
+  }
+  .sidenav {
+    height: 100%; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0; 
+    left: 0;
+    background-color: #111; 
+    overflow-x: hidden; 
+    padding-top: 60px; 
+    transition: 0.5s; 
+  }
+  
+  
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+  
+  .open-button {
+    background-color: black;
+  
+  }
 }
 
 

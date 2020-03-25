@@ -20,7 +20,7 @@ function Delivery(props) {
 
     return (
         <div>
-             <h3>{state.delivery.id}</h3>
+             {/* <h3>{state.delivery.id}</h3> */}
              <h4 className="status">
                  {state.delivery.status} {''}
                 {state.delivery.merchant && state.delivery.merchant.lastName}
@@ -57,9 +57,8 @@ function Delivery(props) {
                 });
 
                 onStatusUpdated(state.delivery);
-                // onUpdated(state.delivery)
 
-            }}>Accpeted Delivery</button>}
+            }}>Accpeted</button>}
 
             {state.delivery.status === "picking Up" &&
             <button className="pickUp-button" onClick={async () => {

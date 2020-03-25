@@ -63,7 +63,32 @@ render() {
           {authService.isAuthenticated() && <Link to="/transit-deliveries">ANONYM</Link>}
           {!authService.isAuthenticated() ?  <Link to="/login">SIGN IN</Link> :
           <button className="signUp-button" onClick= {this.signOutDeliverere}>Sign Out</button>
+          }  */}
+
+          {/* {/* {
+          !authService.isAuthenticated() ? (
+            <Link to="/signup">REGISTER</Link>
+          ) : (
+            null
+          )
           }
+            
+{/*  */}
+
+          <div id="mySidenav" class={`sidenav ${!this.state.isMenuOpen? "sidenavClose": ""}`}>
+          <button href="#" class="closebtn" onClick={(e) => {
+            e.preventDefault();
+
+            this.setState({
+              ...this.state,
+              isMenuOpen: !this.state.isMenuOpen
+            });
+          }}>&times;</button>
+          {authService.isAuthenticated() && <Link to='/'>Dashboard</Link>}
+          {authService.isAuthenticated() && <Link to="/deliveries-history">HISTORY</Link>}
+          {authService.isAuthenticated() && <Link to="/transit-deliveries">TRANSIT</Link>}
+          {!authService.isAuthenticated() ?  <Link to="/login">SIGN IN</Link> :
+          <button className="signUp-button" onClick= {this.signOutDeliverere}>Sign Out</button>}
 
           {
           !authService.isAuthenticated() ? (
@@ -72,25 +97,8 @@ render() {
             null
           )
           }
-             */}
-
-
-          <div id="mySidenav" class={`sidenav ${!this.state.isMenuOpen? "sidenavClose": ""}`}>
-          <a href="#" class="closebtn" onClick={(e) => {
-            e.preventDefault();
-
-            this.setState({
-              ...this.state,
-              isMenuOpen: !this.state.isMenuOpen
-            });
-          }}>&times;</a>
-          {authService.isAuthenticated() && <Link to='/'>Dashboard</Link>}
-          {authService.isAuthenticated() && <Link to="/deliveries-history">HISTORY</Link>}
-          {authService.isAuthenticated() && <Link to="/transit-deliveries">ANONYM</Link>}
-          {!authService.isAuthenticated() ?  <Link to="/login">SIGN IN</Link> :
-          <button className="signUp-button" onClick= {this.signOutDeliverere}>Sign Out</button>}
           </div>
-          <button onClick={(e) => {
+          <button className="open-button" onClick={(e) => {
             e.preventDefault();
             
             this.setState({
@@ -98,13 +106,7 @@ render() {
               isMenuOpen: !this.state.isMenuOpen
             });
           }}>open</button>
-
-          <div id="main">
-            ...
-          </div>
-
-
-
+          <div id="main">...</div> 
         </nav>
         <main className="main-menu">
 

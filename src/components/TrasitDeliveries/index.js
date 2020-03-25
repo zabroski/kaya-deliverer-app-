@@ -19,7 +19,7 @@ const TransitDeliveries = async (setDeliveries) => {
   
     return (
       <div className="App">
-        <h1>anonym</h1>
+        <h1>Transit</h1>
         {deliveries.map(delivery => {
             return <Delivery delivery={delivery} />;
         })}
