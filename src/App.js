@@ -90,13 +90,7 @@ render() {
           {!authService.isAuthenticated() ?  <Link to="/login">SIGN IN</Link> :
           <button className="signUp-button" onClick= {this.signOutDeliverere}>Sign Out</button>}
 
-          {
-          !authService.isAuthenticated() ? (
-            <Link to="/signup">REGISTER</Link>
-          ) : (
-            null
-          )
-          }
+          {!authService.isAuthenticated() ? (<Link to="/signup">REGISTER</Link>) : (null)}
           </div>
           <button className="open-button" onClick={(e) => {
             e.preventDefault();
